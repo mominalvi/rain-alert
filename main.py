@@ -2,13 +2,15 @@ import os
 import requests
 from twilio.rest import Client
 from twilio.http.http_client import TwilioHttpClient
+from dotenv import load_dotenv
+load_dotenv()
 
 proxy_client = TwilioHttpClient()
 proxy_client.session.proxies = {"https": os.environ['https_proxy']}
 
-api_key = "cd8f3535ee87e49738748fc22fd98b47"
-account_sid = "AC56a72bf7b52bcbf74b9edfb80dcb4fad"
-auth_token = "5436cf1e419f49fa9dae483311569c94"
+api_key = os.getenv('API_KEY')
+account_sid = os.getenv('ACCOUNT_SID')
+auth_token = os.getenv('AUTH_TOKEN')
 
 parameters = {
     "lat": 43.325520,
